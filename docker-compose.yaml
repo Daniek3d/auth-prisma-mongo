@@ -1,0 +1,15 @@
+version: '2'
+services:
+  node:
+    image: "node:13.12"
+    user: "node"
+    working_dir: /home/node/app
+    restart: on-failure
+    ports: 
+      - "3000:3000"
+    expose:
+      - "3000:3000"
+    command: sh -c "npm i --no-optional && npx prisma generate && node api-todo.js"
+    volumes:
+      - ./dist:/home/node/app
+  

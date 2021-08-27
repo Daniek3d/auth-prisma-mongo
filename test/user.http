@@ -1,0 +1,49 @@
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJ0ZXN0MSIsImVtYWlsIjoidGVzdDFAdGVzdC5jb20ifSwiaWF0IjoxNjI1MjU1NjgzLCJleHAiOjE2MjUyNjI4ODN9.eTZFLJ3aRUE-TJU9ElzYsBJl4jDZFCJLG4jqDBrAtI4
+@token2 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoyLCJub21icmUiOiJ0ZXN0MiIsImVtYWlsIjoidGVzdDJAdGVzdC5jb20ifSwiaWF0IjoxNjI1MjU1OTY4LCJleHAiOjE2MjUyNjMxNjh9.uYzgt6bfbDw3F1t4d1MTHPl5oKFyd1ARyz3gxa75mu8
+## Login de Usuario
+POST http://localhost:3000/api/v1/auth/login
+content-type: application/json
+
+{
+    "email": "test2@test.com",
+    "password": "12345"
+}
+
+### Registro de Usuario
+POST http://localhost:3000/api/v1/auth/user
+content-type: application/json
+
+{
+    "email": "test2@test.com",
+    "name": "test2",
+    "password": "12345"
+}
+
+###  Crea una Tarea
+POST http://localhost:3000/api/v1/todo
+Authorization: Bearer {{token2}}
+content-type: application/json
+
+{
+    "task": "Task description",
+    "title": "task 2"
+}
+
+
+### Obtiene las tareas de un Usuario
+Get http://localhost:3000/api/v1/todo
+Authorization: Bearer {{token2}}
+content-type: application/json 
+
+
+### Actualiza el estado de una tarea se debe de enviar el id de la tarea solo acepta 'completed not-completed delete'
+PUT http://localhost:3000/api/v1/todo/2
+Authorization: Bearer {{token2}}
+content-type: application/json
+
+{
+    "task": "Task id 2 description",
+    "title": "task 2",
+    "status": "delete"
+}
