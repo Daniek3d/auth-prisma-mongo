@@ -10,8 +10,10 @@
         "copy-prisma": "copyfiles -aVE prisma/** ./dist",
         "copy-public": "copyfiles public/** ./dist",
         "prod": "tsc && npm run copy-json && npm run copy-prisma && npm run copy-public",
+        "build": "tsc && npm run copy-prisma && npm run copy-public",
         "apidoc": "apidoc -i src/controllers/ -o dist/public/apidoc/",
-        "start": "nodemon ./dist/api-auth.js"
+        "start": "node ./dist/api-auth.js",
+        "postinstall": "npm run build"
     },
     "author": "Daniel De La Luz",
     "license": "ISC",
