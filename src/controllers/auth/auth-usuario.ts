@@ -92,6 +92,16 @@ export default class AuthUsuario implements IControllerBase {
                 });
             return;
         }
+        const existe = await prisma.user.findFirst({
+            where: { email }
+        });
+        if (existe) {
+            return res.status(422)
+                .json({
+                    ok: false,
+                    msg: 'Email ya existe'
+                });
+        }
         req.body.password = bcrypt.hashSync(req.body.password, 5);
         const result = await prisma.user.create({
             data: {
