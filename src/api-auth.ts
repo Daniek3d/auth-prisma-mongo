@@ -12,7 +12,7 @@ import { verificaTokenUsuario } from './middleware/autenticacion';
 
 
 const app = new App({
-    port: Number(process.env.HTTP_SERVER_PORT),
+    port: Number(process.env.PORT),
     controllers: [
         new AuthUsuario(),
     ],
